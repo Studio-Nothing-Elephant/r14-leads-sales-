@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -210,19 +210,91 @@
         <h1>Premium Roofing Leads with Financial Intelligence</h1>
         <p class="subtitle">40 High-Equity Storm Leads • Property Tax Analysis • Close Rate 2.4x Higher</p>
         
-        <div class="location-selector">
-            <label for="location-select">Select Your Target Market:</label>
-            <select id="location-select">
-                <option value="Tampa FL">Tampa, FL</option>
-                <option value="Miami FL">Miami, FL</option>
-                <option value="Orlando FL">Orlando, FL</option>
-                <option value="Jacksonville FL">Jacksonville, FL</option>
-                <option value="Fort Myers FL">Fort Myers, FL</option>
-                <option value="Sarasota FL">Sarasota, FL</option>
-                <option value="Naples FL">Naples, FL</option>
-                <option value="Clearwater FL">Clearwater, FL</option>
-            </select>
-        </div>
+       <select id="location-select" name="target_market">
+    <option value="" disabled selected>Select a Target Market (US & International)</option>
+
+    <optgroup label="United States (All States - Broad Territory)">
+        <option value="Alabama AL">Alabama</option>
+        <option value="Alaska AK">Alaska</option>
+        <option value="Arizona AZ">Arizona</option>
+        <option value="Arkansas AR">Arkansas</option>
+        <option value="California CA">California</option>
+        <option value="Colorado CO">Colorado</option>
+        <option value="Connecticut CT">Connecticut</option>
+        <option value="Delaware DE">Delaware</option>
+        <option value="District of Columbia DC">Washington, D.C.</option>
+        <option value="Florida FL">Florida</option>
+        <option value="Georgia GA">Georgia</option>
+        <option value="Hawaii HI">Hawaii</option>
+        <option value="Idaho ID">Idaho</option>
+        <option value="Illinois IL">Illinois</option>
+        <option value="Indiana IN">Indiana</option>
+        <option value="Iowa IA">Iowa</option>
+        <option value="Kansas KS">Kansas</option>
+        <option value="Kentucky KY">Kentucky</option>
+        <option value="Louisiana LA">Louisiana</option>
+        <option value="Maine ME">Maine</option>
+        <option value="Maryland MD">Maryland</option>
+        <option value="Massachusetts MA">Massachusetts</option>
+        <option value="Michigan MI">Michigan</option>
+        <option value="Minnesota MN">Minnesota</option>
+        <option value="Mississippi MS">Mississippi</option>
+        <option value="Missouri MO">Missouri</option>
+        <option value="Montana MT">Montana</option>
+        <option value="Nebraska NE">Nebraska</option>
+        <option value="Nevada NV">Nevada</option>
+        <option value="New Hampshire NH">New Hampshire</option>
+        <option value="New Jersey NJ">New Jersey</option>
+        <option value="New Mexico NM">New Mexico</option>
+        <option value="New York NY">New York</option>
+        <option value="North Carolina NC">North Carolina</option>
+        <option value="North Dakota ND">North Dakota</option>
+        <option value="Ohio OH">Ohio</option>
+        <option value="Oklahoma OK">Oklahoma</option>
+        <option value="Oregon OR">Oregon</option>
+        <option value="Pennsylvania PA">Pennsylvania</option>
+        <option value="Rhode Island RI">Rhode Island</option>
+        <option value="South Carolina SC">South Carolina</option>
+        <option value="South Dakota SD">South Dakota</option>
+        <option value="Tennessee TN">Tennessee</option>
+        <option value="Texas TX">Texas</option>
+        <option value="Utah UT">Utah</option>
+        <option value="Vermont VT">Vermont</option>
+        <option value="Virginia VA">Virginia</option>
+        <option value="Washington WA">Washington</option>
+        <option value="West Virginia WV">West Virginia</option>
+        <option value="Wisconsin WI">Wisconsin</option>
+        <option value="Wyoming WY">Wyoming</option>
+    </optgroup>
+
+    <optgroup label="Europe (High-Value & Luxury)">
+        <option value="London UK">London, United Kingdom</option>
+        <option value="Paris FR">Paris, France</option>
+        <option value="Berlin DE">Berlin, Germany</option>
+        <option value="Amsterdam NL">Amsterdam, Netherlands</option>
+        <option value="Madrid ES">Madrid, Spain</option>
+        <option value="Rome IT">Rome, Italy</option>
+        <option value="Monaco MC">Monaco (Exclusive)</option>
+    </optgroup>
+    
+    <optgroup label="Asia-Pacific (Major Economic & Tech Hubs)">
+        <option value="Tokyo JP">Tokyo, Japan</option>
+        <option value="Shanghai CN">Shanghai, China</option>
+        <option value="Hong Kong HK">Hong Kong</option>
+        <option value="Singapore SG">Singapore</option>
+        <option value="Sydney AU">Sydney, Australia</option>
+        <option value="Seoul KR">Seoul, South Korea</option>
+        <option value="Mumbai IN">Mumbai, India</option>
+    </optgroup>
+
+    <optgroup label="Middle East & Americas (Giga-Projects & Wealth)">
+        <option value="Dubai UAE">Dubai, UAE</option>
+        <option value="Riyadh SA">Riyadh, Saudi Arabia</option>
+        <option value="Doha QA">Doha, Qatar</option>
+        <option value="Toronto CA">Toronto, Canada</option>
+        <option value="Vancouver CA">Vancouver, Canada</option>
+    </optgroup>
+</select>
         
         <div class="features">
             <div class="feature-item">
@@ -307,45 +379,54 @@
         }
         
         paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'blue',
-                shape: 'rect',
-                label: 'paypal',
-                height: 55
-            },
-            
-            createOrder: function(data, actions) {
-                const location = getSelectedLocation();
-                const customId = `R14-LEAD-ORDER|${R14_NICHE}|${location}`;
-                
-                return actions.order.create({
-                    intent: 'CAPTURE',
-                    purchase_units: [{
-                        amount: {
-                            currency_code: 'USD',
-                            value: PRODUCT_PRICE
-                        },
-                        description: `${R14_NICHE} Leads - ${location} (40 leads - Pro Tier)`,
-                        custom_id: customId,
-                        soft_descriptor: 'WORLD CLASS LEADS'
-                    }]
-                });
-            },
-            
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(orderData) {
-                    alert('Payment successful! Check your email for delivery confirmation within 2 minutes.');
-                    console.log('Transaction ID:', orderData.id);
-                });
-            },
-            
-            onError: function(err) {
-                console.error('PayPal error:', err);
-                alert('Payment failed. Please try again or contact support.');
-            }
-            
-        }).render('#paypal-button-container');
+    // ... existing style object ...
+    style: {
+        layout: 'vertical',
+        color: 'blue',
+        shape: 'rect',
+        label: 'paypal',
+        height: 55
+    },
+    
+    createOrder: function(data, actions) {
+        const location = getSelectedLocation();
+        // **NEW: Check if a location was selected**
+        if (!location) { 
+            alert('Please select a Target Market before purchasing.'); 
+            return null; // Stops the order creation
+        }
+        // **END NEW**
+        
+        const customId = `R14-LEAD-ORDER|${R14_NICHE}|${location}`;
+        
+        return actions.order.create({
+            intent: 'CAPTURE',
+            purchase_units: [{
+                amount: {
+                    currency_code: 'USD',
+                    value: PRODUCT_PRICE
+                },
+                description: `${R14_NICHE} Leads - ${location} (40 leads - Pro Tier)`,
+                custom_id: customId,
+                soft_descriptor: 'WORLD CLASS LEADS'
+            }]
+        });
+    },
+    
+    // ... rest of the functions (onApprove, onError) ...
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(orderData) {
+            alert('Payment successful! Check your email for delivery confirmation within 2 minutes.');
+            console.log('Transaction ID:', orderData.id);
+        });
+    },
+    
+    onError: function(err) {
+        console.error('PayPal error:', err);
+        alert('Payment failed. Please try again or contact support.');
+    }
+}).render('#paypal-button-container');
     </script>
 </body>
 </html>
+
