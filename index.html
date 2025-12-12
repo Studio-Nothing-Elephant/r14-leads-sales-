@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World-Class Roofing Leads - $97 Instant Access</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #718096;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2d3748;
+        }
+        
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .checkmark {
+            color: #48bb78;
+            font-size: 24px;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 30px 0;
+        }
+        
+        .price-subtext {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 30px;
+        }
+        
+        #paypal-button-container {
+            margin: 30px 0;
+        }
+        
+        .guarantee {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 20px;
+            padding: 15px;
+            background: #edf2f7;
+            border-radius: 8px;
+        }
+        
+        .message {
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 16px;
+            display: none;
+        }
+        
+        .message.success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 2px solid #48bb78;
+        }
+        
+        .message.error {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 2px solid #fc8181;
+        }
+        
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎯</div>
+        <h1>World-Class Roofing Leads</h1>
+        <p class="subtitle">50 FEMA Cross-Referenced Leads - Tampa, FL</p>
+        
+        <div class="features">
+            <div class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>50 Pre-Qualified Roofing Leads</span>
+            </div>
+            <div class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>FEMA Storm Damage Cross-Referenced</span>
+            </div>
+            <div class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Utility Delinquency Scoring Included</span>
+            </div>
+            <div class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Instant CSV Download After Payment</span>
+            </div>
+            <div class="feature-item">
+                <span class="checkmark">✓</span>
+                <span>Avg Quality Score: 85+ (0-120 Scale)</span>
+            </div>
+        </div>
+        
+        <div class="price">$97</div>
+        <p class="price-subtext">One-time payment • Instant delivery • No subscription</p>
+        
+        <!-- PayPal Button Container -->
+        <div id="paypal-button-container"></div>
+        
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px; color: #667eea;">Processing your payment...</p>
+        </div>
+        
+        <!-- Success/Error Messages -->
+        <div class="message success" id="success-message">
+            <strong>✅ Payment Successful!</strong><br>
+            Your leads are being generated. You'll receive delivery confirmation via email within 2 minutes.
+        </div>
+        
+        <div class="message error" id="error-message">
+            <strong>❌ Payment Failed</strong><br>
+            <span id="error-text">There was an issue processing your payment. Please try again or contact support.</span>
+        </div>
+        
+        <div class="guarantee">
+            🔒 Secure Payment • 100% Money-Back Guarantee • Delivered Instantly
+        </div>
+        
+        <div class="footer">
+            Powered by PayPal • All transactions are secure and encrypted
+        </div>
+    </div>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=[ASdJb9Ix0yxCPA5MnUX3esHTDXAEy_BT9WsYiQbAy-foam5WF-5lnE-DkU4fWJBuRu2y7UlBfuJmOXqi]&currency=USD"></script>
+    
+    <script>
+        // ============================================================================
+        // CONFIGURATION - EDIT THESE VARIABLES
+        // ============================================================================
+        
+        // REQUIRED: Insert your LIVE PayPal Client ID in the script tag above
+        // Get it from: https://developer.paypal.com/dashboard/applications/live
+        
+        // Lead Generation Parameters (modify as needed)
+        const R14_NICHE = 'Roofing';        // Options: Roofing, Remodeling, CRE
+        const R14_LOCATION = 'Tampa FL';    // Format: "City State" (no commas)
+        const PRODUCT_PRICE = '97.00';      // USD amount (do not include $ symbol)
+        
+        // ============================================================================
+        // PAYPAL INTEGRATION - DO NOT MODIFY BELOW THIS LINE
+        // ============================================================================
+        
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'blue',
+                shape: 'rect',
+                label: 'paypal',
+                height: 55
+            },
+            
+            // Create order with metadata
+            createOrder: function(data, actions) {
+                // Format: R14-LEAD-ORDER|Niche|Location
+                const customId = `R14-LEAD-ORDER|${R14_NICHE}|${R14_LOCATION}`;
+                
+                return actions.order.create({
+                    intent: 'CAPTURE',
+                    purchase_units: [{
+                        amount: {
+                            currency_code: 'USD',
+                            value: PRODUCT_PRICE
+                        },
+                        description: `${R14_NICHE} Leads - ${R14_LOCATION} (50 leads)`,
+                        custom_id: customId,  // CRITICAL: R14 backend reads this field
+                        soft_descriptor: 'WORLD CLASS LEADS'
+                    }]
+                });
+            },
+            
+            // Show loading spinner
+            onClick: function() {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('success-message').style.display = 'none';
+                document.getElementById('error-message').style.display = 'none';
+            },
+            
+            // Handle successful payment
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    console.log('Payment captured:', orderData);
+                    
+                    // Hide loading, show success
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('paypal-button-container').style.display = 'none';
+                    
+                    // Log transaction details (for debugging)
+                    console.log('Transaction ID:', orderData.id);
+                    console.log('Custom ID (metadata):', orderData.purchase_units[0].custom_id);
+                    console.log('Amount:', orderData.purchase_units[0].amount.value);
+                    
+                    // Optional: Redirect to thank you page after 5 seconds
+                    // setTimeout(function() {
+                    //     window.location.href = 'thank-you.html';
+                    // }, 5000);
+                });
+            },
+            
+            // Handle errors
+            onError: function(err) {
+                console.error('PayPal error:', err);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('error-text').textContent = 
+                    'Payment failed. Please try again or contact support if the issue persists.';
+            },
+            
+            // Handle payment cancellation
+            onCancel: function(data) {
+                console.log('Payment cancelled:', data);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('error-text').textContent = 
+                    'Payment was cancelled. Click the PayPal button above to try again.';
+            }
+            
+        }).render('#paypal-button-container');
+        
+        // Log configuration on page load (for debugging)
+        console.log('R14 Configuration:');
+        console.log('- Niche:', R14_NICHE);
+        console.log('- Location:', R14_LOCATION);
+        console.log('- Price:', PRODUCT_PRICE, 'USD');
+        console.log('- Custom ID Format:', `R14-LEAD-ORDER|${R14_NICHE}|${R14_LOCATION}`);
+    </script>
+</body>
+</html>
